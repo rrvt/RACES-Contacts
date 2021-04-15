@@ -1,0 +1,97 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/OneColumnPage.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>RACES Contact List Operations</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<link href="App.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="container">
+<div class="content">
+<!-- InstanceBeginEditable name="Title" -->
+<h1>RACES Contact List Operations</h1>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="Body" -->
+<h2>The Toolbar</h2>
+<h2><img src="Images/AccessIcon.jpg" width="16" height="15"> Open and Load Database</h2>
+<p>
+Opens the database and displays table information.
+</p>
+
+<h2><img src="Images/SortContacts.jpg" width="144" height="71"> Sort Contacts</h2>
+<p>A drop down menu to sort the Contact List by name (last name, first name) or by FCC call sign.  Defaults to 
+Sort by Name.  Displays the list.
+</p>
+<h3>Sort by Name</h3>
+<p>Sort by Name (last name, first name) and displays the list.</p>
+<h3>Sort by Call Sign</h3>
+<p>Sort by FCC call sign and displays the list.</p>
+
+<h2><img src="Images/Floppy.jpg" width="16" height="15"> Save File</h2>
+<p>
+Displays a Save File Dialog and saves the currently displayed sorted list to the file selected as a "txt"
+(i.e. text file).  Note, the 
+default names are chosen by the current sort and it remembers the last output directory.
+</p>
+
+<h2><img src="Images/SaveCSV.jpg" width="140" height="68"> Sort and Save cSV File</h2>
+<p>
+A drop down menu to sort the Contact List by name (last name, first name) or by FCC call sign and then
+saves the data as a Comma Separated Value (CSV) file.  Defaults to Sort
+By Name.  Note, the default names are chosen by the  sort chosen and it remembers the last output directory. 
+The csv file is not displayed in the window of the application and is not affected by the currently displayed list.
+</p>
+<h3>Sort by Name</h3>
+<p>Sorts by Name and saves the data as a CSV file.</p>
+<h3>Sort by Call Sign</h3>
+<p>Sorts by FCC Call Sign and saves the data as a CSV file.</p>
+
+<h2><img src="Images/Printer.jpg" width="16" height="15"> Print</h2>
+<p>
+Will do all the normal things to print the currently displayed sorted list.
+</p>
+
+
+<h2><img src="Images/Options.jpg" width="16" height="15"> Options</h2>
+<p>
+The options dialog allows specifying the Display and Printer Font Size Scale Factor, the printer
+orientation and the printer margins.
+</p>
+
+
+<h2><img src="Images/About.jpg" width="16" height="15"> About</h2>
+<p>
+Displays the About Box.  The about box uses text from the resource file (TestApp.rc) for
+the output information.  There is a standard about box dialog in the Library.
+</p>
+
+<h2><img src="Images/Exit.jpg" width="16" height="15"> Exit</h2>
+<p>
+ Exit the application with no reservations.
+</p>
+<h2>Menus</h2>
+<p>Most of the menu items correspond to the toolbar descriptions.  Only the extra menu items are described here.</p>
+<h2>File Menu</h2>
+<h3>Print Preview</h3>
+<p>
+In a new window displays the currently displayed sorted list as the list would appear when printed.
+</p>
+<h3>Print Setup</h3>
+<p>
+The printer may be chosen.  Note the orientation of the printer output may also be managed in the Options dialog.
+</p>
+<h2>Help Menu</h2>
+<h3>Introduction</h3>
+<p>Starts the Help application at the Introduction page.</p>
+<!-- InstanceEndEditable -->
+</div><!-- end .content -->
+</div><!-- end .container -->
+</body>
+<!-- InstanceEnd --></html>

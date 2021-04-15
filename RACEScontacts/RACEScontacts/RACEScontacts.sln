@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RACEScontactsHelp", "..\RACEScontacts.hlp\RACEScontactsHelp.vcxproj", "{3F33053A-412A-4F58-B813-5500CEE36A89}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RACEScontacts", "..\RACEScontacts.prj\RACEScontacts.vcxproj", "{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F33053A-412A-4F58-B813-5500CEE36A89} = {3F33053A-412A-4F58-B813-5500CEE36A89}
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Library", "..\..\Library\Library.prj\Library.vcxproj", "{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "..\Installer\Installer.wixproj", "{59582060-ABA8-4462-976F-801C76444E49}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F33053A-412A-4F58-B813-5500CEE36A89} = {3F33053A-412A-4F58-B813-5500CEE36A89}
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B} = {CF57F3EC-D3DB-4469-8519-3F9D73785D9B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F33053A-412A-4F58-B813-5500CEE36A89}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F33053A-412A-4F58-B813-5500CEE36A89}.Debug|Win32.Build.0 = Debug|Win32
+		{3F33053A-412A-4F58-B813-5500CEE36A89}.Release|Win32.ActiveCfg = Release|Win32
+		{3F33053A-412A-4F58-B813-5500CEE36A89}.Release|Win32.Build.0 = Release|Win32
+		{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}.Debug|Win32.Build.0 = Debug|Win32
+		{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}.Release|Win32.ActiveCfg = Release|Win32
+		{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}.Release|Win32.Build.0 = Release|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Debug|Win32.Build.0 = Debug|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.ActiveCfg = Release|Win32
+		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.Build.0 = Release|Win32
+		{59582060-ABA8-4462-976F-801C76444E49}.Debug|Win32.ActiveCfg = Debug|x86
+		{59582060-ABA8-4462-976F-801C76444E49}.Release|Win32.ActiveCfg = Release|x86
+		{59582060-ABA8-4462-976F-801C76444E49}.Release|Win32.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B2B91F0-E9F6-45C7-BC50-F8E0E4A0183F}
+	EndGlobalSection
+EndGlobal
