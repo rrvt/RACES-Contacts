@@ -46,6 +46,13 @@ appears to be stable.  In April 2021 it still does not appear stable.
 
 The msi file will install the application.
 
+## Updates
+
+### Update 5/21/21
+
+Added a clear function to all database so that load may be performed multiple time with different
+databases.
+
 ## Authors
 
 Robert R. Van Tuyl, K6RWY
