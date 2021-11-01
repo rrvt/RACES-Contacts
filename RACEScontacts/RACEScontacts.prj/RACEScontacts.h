@@ -20,8 +20,8 @@ public:
   virtual BOOL InitInstance();
   virtual int  ExitInstance();
 
-          RACEScontactsDoc*  doc()  {return (RACEScontactsDoc*)  CApp::getDoc();}
-          RACEScontactsView* view() {return (RACEScontactsView*) CApp::getView();}
+          RACEScontactsDoc*  doc()   {return (RACEScontactsDoc*)  CApp::getDoc();}
+          RACEScontactsView* view()  {return (RACEScontactsView*) CApp::getView();}
           MainFrame*       mainFrm() {return (MainFrame*) m_pMainWnd;}
 
   DECLARE_MESSAGE_MAP()

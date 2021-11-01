@@ -42,16 +42,10 @@
     <ClInclude Include="StoreRpt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\About.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AddressTbl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssgnPrefTbl.h">
@@ -75,16 +69,10 @@
     <ClInclude Include="StatusTbl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MemberList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MemberRpts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Quoted.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IDitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\AboutDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -108,9 +96,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StoreRpt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Library\Extras\About.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
@@ -140,13 +125,7 @@
     <ClCompile Include="StatusTbl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemberList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MemberRpts.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Quoted.cpp">
+    <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -166,21 +145,15 @@
     <None Include="..\..\Library\Extras\Options.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\Toolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\ShortToolbar01.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="res\ShortToolbar02.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Library\Extras\AboutDlg.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\RACEScontacts.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\ShortToolbar.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

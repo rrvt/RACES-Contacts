@@ -35,7 +35,7 @@ int maxEmail;
 
 private:
 
-  void   create();
+  void   create(CScrView& vw);
   int    header(NotePad& np, bool printing);
   void   setTabs();
   void   setTabs2();

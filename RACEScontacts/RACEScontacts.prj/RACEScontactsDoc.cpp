@@ -134,7 +134,7 @@ String RACEScontactsDoc::readOutputPath()
 
 
 void RACEScontactsDoc::saveOutputPath(TCchar* path)
-                 {outputPath = getPath(path);   iniFile.writeString(FileSection, OutputKey, outputPath);}
+                 {outputPath = ::getPath(path);   iniFile.writeString(FileSection, OutputKey, outputPath);}
 
 
 // UglyDoc serialization
