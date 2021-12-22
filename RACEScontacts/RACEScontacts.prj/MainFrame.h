@@ -11,8 +11,6 @@ class MainFrame : public CMainFrm {
 CMFCMenuBar   m_wndMenuBar;
 ToolBar       toolBar;
 CMFCStatusBar m_wndStatusBar;
-CMenu         stsMenu;
-CMenu         csvMenu;
 
 protected:                                          // create from serialization only
 

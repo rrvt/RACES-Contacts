@@ -63,14 +63,10 @@ int MainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
 
 void MainFrame::setupToolBar() {
+CRect winRect;   GetWindowRect(&winRect);   toolBar.initialize(winRect);
 
-  if (!stsMenu.m_hMenu) stsMenu.LoadMenu(IDR_MemberStatus);
-  if (!csvMenu.m_hMenu) csvMenu.LoadMenu(IDR_CSVsaveFileMode);
-
-  toolBar.setMnuCtrl(ID_ContactList, stsMenu.GetSafeHmenu(), _T("Sort Contacts"));
-  toolBar.setMnuCtrl(ID_CSVfileSave, csvMenu.GetSafeHmenu(), _T("Sort && Save CSV File"));
-
-  toolBar.install();
+  toolBar.installMenu(ID_ContactList, IDR_MemberStatus,    _T("Sort Contacts"));
+  toolBar.installMenu(ID_CSVfileSave, IDR_CSVsaveFileMode, _T("Sort && Save CSV File"));
   }
 
 
@@ -110,4 +106,17 @@ void MainFrame::Dump(CDumpContext& dc) const
 #endif
 
 //  if ( !menu.m_hMenu)  menu.LoadMenu(IDR_PopupMenu);
+
+
+
+
+#if 0
+  if (!stsMenu.m_hMenu) stsMenu.LoadMenu(IDR_MemberStatus);
+  if (!csvMenu.m_hMenu) csvMenu.LoadMenu(IDR_CSVsaveFileMode);
+
+  toolBar.setMnuCtrl(ID_ContactList, stsMenu.GetSafeHmenu(), _T("Sort Contacts"));
+  toolBar.setMnuCtrl(ID_CSVfileSave, csvMenu.GetSafeHmenu(), _T("Sort && Save CSV File"));
+
+  toolBar.install();
+#endif
 

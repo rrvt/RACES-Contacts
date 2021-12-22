@@ -12,6 +12,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RACEScontacts", "..\RACESco
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Library", "..\..\Library\Library.prj\Library.vcxproj", "{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3F33053A-412A-4F58-B813-5500CEE36A89} = {3F33053A-412A-4F58-B813-5500CEE36A89}
+	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "..\Installer\Installer.wixproj", "{59582060-ABA8-4462-976F-801C76444E49}"
 	ProjectSection(ProjectDependencies) = postProject
