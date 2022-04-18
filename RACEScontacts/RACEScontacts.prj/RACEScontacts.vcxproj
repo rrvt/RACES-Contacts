@@ -15,20 +15,21 @@
     <ProjectGuid>{B1BDC654-8D02-4579-975B-0E27F1EF8DA2}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>TestApp</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
@@ -60,16 +61,17 @@
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
-      <AdditionalIncludeDirectories>
-        $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
-      </AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile/>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\AccessDB.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BasicRuntimeChecks />
+      <BasicRuntimeChecks/>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <PrecompiledHeaderOutputFile />
+      <PrecompiledHeaderOutputFile/>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -100,14 +102,14 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
-      <AdditionalIncludeDirectories>
-        $(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)
-      </AdditionalIncludeDirectories>
-      <DebugInformationFormat />
+      <PrecompiledHeaderFile/>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\AccessDB.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat/>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <BasicRuntimeChecks />
-      <PrecompiledHeaderOutputFile />
+      <BasicRuntimeChecks/>
+      <PrecompiledHeaderOutputFile/>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,7 +118,7 @@
       <AdditionalDependencies>Htmlhelp.lib</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <ProgramDatabaseFile />
+      <ProgramDatabaseFile/>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -135,19 +137,13 @@
     <ClInclude Include="..\..\Library\Extras\AboutDlg.h" />
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
-    <ClInclude Include="AssgnPrefTbl.h" />
-    <ClInclude Include="CityStateTbl.h" />
-    <ClInclude Include="DBtables.h" />
-    <ClInclude Include="EntityTbl.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="IDitem.h" />
-    <ClInclude Include="LocationPrefTbl.h" />
     <ClInclude Include="MainFrame.h" />
-    <ClInclude Include="MemberTbl.h" />
     <ClInclude Include="RACEScontacts.h" />
     <ClInclude Include="RACEScontactsDoc.h" />
     <ClInclude Include="RACEScontactsView.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="StatusTbl.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Store.h" />
     <ClInclude Include="StoreRpt.h" />
@@ -156,23 +152,18 @@
   <ItemGroup>
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
-    <ClCompile Include="AddressTbl.cpp" />
-    <ClCompile Include="AssgnPrefTbl.cpp" />
-    <ClCompile Include="CityStateTbl.cpp" />
-    <ClCompile Include="DBtables.cpp" />
-    <ClCompile Include="EntityTbl.cpp" />
-    <ClCompile Include="LocationPrefTbl.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="MainFrame.cpp" />
-    <ClCompile Include="MemberTbl.cpp" />
     <ClCompile Include="RACEScontacts.cpp" />
     <ClCompile Include="RACEScontactsDoc.cpp" />
     <ClCompile Include="RACEScontactsView.cpp" />
-    <ClCompile Include="StatusTbl.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="StoreRpt.cpp" />
   </ItemGroup>
-  <ItemGroup><ResourceCompile Include="RACEScontacts.rc" /></ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RACEScontacts.rc" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Library\Extras\AboutDlg.rc2" />
     <None Include="..\README.md" />
@@ -181,8 +172,13 @@
     <None Include="res\RACEScontacts.rc2" />
     <None Include="res\ShortToolbar02.bmp" />
   </ItemGroup>
-  <ItemGroup><Image Include="res\RACEScontacts.ico" /></ItemGroup>
   <ItemGroup>
+    <Image Include="res\RACEScontacts.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\AccessDB.prj\AccessDB.vcxproj">
+      <Project>{12084586-a769-4348-b54d-336fa036a1fb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Library\Library.prj\Library.vcxproj">
       <Project>{DC26E782-51F1-47D0-AA46-6629711A15B4}</Project>
     </ProjectReference>

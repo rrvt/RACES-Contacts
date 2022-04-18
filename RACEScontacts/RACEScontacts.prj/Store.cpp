@@ -3,10 +3,10 @@
 
 #include "stdafx.h"
 #include "Store.h"
-#include "EntityTbl.h"
-#include "MemberTbl.h"
+#include "EntTbl.h"
+#include "MbrTbl.h"
 #include "NotePad.h"
-#include "StatusTbl.h"
+#include "StsTbl.h"
 #include "StoreRpt.h"
 #include "Utilities.h"
 
@@ -35,17 +35,17 @@ int Store::missionNo() {
 // The basic idea is that the method reads some chunk from the file (Archive is a fileio surrogate)
 
 void Store::load() {
-MbrIter    iter(memberTbl);
-MemberRcd* rcd;
+MbrIter iter(mbrTbl);
+MbrRcd* rcd;
 
   data.clear();
 
   for (rcd = iter(); rcd; rcd = iter++) {
-    StatusRcd* sts = statusTbl.find(rcd->statusID);   if (!sts) continue;
+    StsRcd* sts = stsTbl.find(rcd->statusID);   if (!sts) continue;
 
     if (sts->abbreviation == _T("Fmr")) continue;
-    EntityRcd* mbr = entityTbl.find(rcd->mbrEntityID);   if (!mbr) continue;
-    EntityRcd* empl = entityTbl.find(rcd->emplEntityID);
+    EntRcd* mbr  = entTbl.find(rcd->mbrEntityID);   if (!mbr) continue;
+    EntRcd* empl = entTbl.find(rcd->emplEntityID);
 
 
     Datum dtm;

@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "RACEScontactsDoc.h"
-#include "DBtables.h"
+#include "Database.h"
 #include "ExtraResource.h"
 #include "filename.h"
 #include "GetPathDlg.h"
@@ -46,7 +46,7 @@ END_MESSAGE_MAP()
 // RACEScontactsDoc construction/destruction
 
 RACEScontactsDoc::RACEScontactsDoc() noexcept : dataSource(NotePadSrc), storeSort(NilSort) {
-  pathDlgDsc = PathDlgDsc(_T("Contact List"), _T(""), _T("txt"), _T("*.txt"));
+  pathDlgDsc(_T("Contact List"), _T(""), _T("txt"), _T("*.txt"));
   }
 
 RACEScontactsDoc::~RACEScontactsDoc() { }
@@ -71,7 +71,7 @@ void RACEScontactsDoc::getDBpath() {iniFile.readString(FileSection, DBFileKey, d
 
 void RACEScontactsDoc::loadDatabase() {
 
-  dbTables.load(databasePath);
+  database.load(databasePath);
 
   store.name = _T("Contact List");
   store.dt.getToday();
@@ -99,7 +99,7 @@ String name = storeSort == FCCsort ? _T("ContactListByFCC") : _T("ContactListByN
 
   name = readOutputPath() + name;
 
-  pathDlgDsc = PathDlgDsc(_T("Contact List"), name, _T("txt"), _T("*.txt"));
+  pathDlgDsc(_T("Contact List"), name, _T("txt"), _T("*.txt"));
 
   dataSource = StoreSrc;
 
@@ -110,7 +110,7 @@ String name = storeSort == FCCsort ? _T("ContactListByFCC") : _T("ContactListByN
 void RACEScontactsDoc::csvSaveByName() {storeSort = NameSort;    store.sortByName();
 String s = readOutputPath() + _T("ContactListByName");
 
-  pathDlgDsc = PathDlgDsc(_T("Contact List"), s, _T("csv"), _T("*.csv"));
+  pathDlgDsc(_T("Contact List"), s, _T("csv"), _T("*.csv"));
 
   dataSource = StoreCSVSrc;
 
@@ -121,7 +121,7 @@ String s = readOutputPath() + _T("ContactListByName");
 void RACEScontactsDoc::csvSaveByFCC() {storeSort = FCCsort;   store.sortByFCC();
 String s = readOutputPath() + _T("ContactListByFCC");
 
-  pathDlgDsc = PathDlgDsc(_T("Contact List"), s, _T("csv"), _T("*.csv"));
+  pathDlgDsc(_T("Contact List"), s, _T("csv"), _T("*.csv"));
 
   dataSource = StoreCSVSrc;
 
