@@ -48,6 +48,10 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 8/4/22
+
+Minor Library Updates.
+
 ### Update 4/15/22
 
 Big adventure in February when I started moving to a new Win11 and Visual Studio 2022.  I now
