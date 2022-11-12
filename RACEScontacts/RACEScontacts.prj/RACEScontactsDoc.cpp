@@ -1,7 +1,7 @@
 // RACEScontactsDoc.cpp : implementation of the RACEScontactsDoc class
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "RACEScontactsDoc.h"
 #include "Database.h"
 #include "ExtraResource.h"

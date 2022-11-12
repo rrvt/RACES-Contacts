@@ -1,7 +1,7 @@
 // RACEScontactsView.cpp : implementation of the RACEScontactsView class
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "RACEScontactsView.h"
 #include "RACEScontacts.h"
 #include "RACEScontactsDoc.h"

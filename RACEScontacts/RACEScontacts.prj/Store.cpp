@@ -1,7 +1,7 @@
 // Sample Data Store
 
 
-#include "stdafx.h"
+#include "pch.h"
 #include "Store.h"
 #include "EntTbl.h"
 #include "MbrTbl.h"

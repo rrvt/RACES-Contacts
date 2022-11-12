@@ -52,6 +52,8 @@ The msi file will install the application.
 
 Update help file icons.  Some internal changes related to loading and storing data.
 
+Also replaced stdafx.h with pch.h/framework.h.
+
 ### Update 10/24/22
 
 Add logic to keep track of window position and size.  Update the toolbar background.
