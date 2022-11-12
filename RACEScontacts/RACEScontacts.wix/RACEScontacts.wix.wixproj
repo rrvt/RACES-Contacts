@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>59582060-aba8-4462-976f-801c76444e49</ProjectGuid>
+    <ProjectGuid>{a2b3db14-e004-44b2-ad22-f973fc4ac6c0}</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>RACEScontacts</OutputName>
     <OutputType>Package</OutputType>

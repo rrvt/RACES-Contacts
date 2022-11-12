@@ -48,6 +48,10 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 11/11/22
+
+Update help file icons.  Some internal changes related to loading and storing data.
+
 ### Update 10/24/22
 
 Add logic to keep track of window position and size.  Update the toolbar background.

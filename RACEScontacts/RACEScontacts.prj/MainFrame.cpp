@@ -98,45 +98,9 @@ CRect winRect;   GetWindowRect(&winRect);   toolBar.initialize(winRect);
 // MainFrame diagnostics
 
 #ifdef _DEBUG
-void MainFrame::AssertValid() const
-{
-  CFrameWndEx::AssertValid();
-}
+void MainFrame::AssertValid() const {CFrameWndEx::AssertValid();}
 
-void MainFrame::Dump(CDumpContext& dc) const
-{
-  CFrameWndEx::Dump(dc);
-}
+void MainFrame::Dump(CDumpContext& dc) const {CFrameWndEx::Dump(dc);}
 #endif //_DEBUG
 
-
-// MainFrame message handlers
-
-
-
-
-#ifdef Examples
-  if (!menu2.m_hMenu) menu2.LoadMenu(IDR_PopupMenu2);
-
-  toolBar.setBtnCtrl(ID_MyBtn,  _T("Load Combo"), 100);
-  toolBar.setCbxCtrl(ID_CB,      100, 500);
-  toolBar.setEbxCtrl(ID_EditBox, 100);
-  toolBar.setMnuCtrl(ID_MyBtn1, menu.GetSafeHmenu(),  _T("Menu 1"));
-  toolBar.setMnuCtrl(ID_Btn2,   menu2.GetSafeHmenu(), _T("Menu 2"));
-#endif
-
-//  if ( !menu.m_hMenu)  menu.LoadMenu(IDR_PopupMenu);
-
-
-
-
-#if 0
-  if (!stsMenu.m_hMenu) stsMenu.LoadMenu(IDR_MemberStatus);
-  if (!csvMenu.m_hMenu) csvMenu.LoadMenu(IDR_CSVsaveFileMode);
-
-  toolBar.setMnuCtrl(ID_ContactList, stsMenu.GetSafeHmenu(), _T("Sort Contacts"));
-  toolBar.setMnuCtrl(ID_CSVfileSave, csvMenu.GetSafeHmenu(), _T("Sort && Save CSV File"));
-
-  toolBar.install();
-#endif
 

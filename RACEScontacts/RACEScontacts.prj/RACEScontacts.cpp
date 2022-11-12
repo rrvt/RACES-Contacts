@@ -73,7 +73,7 @@ BOOL RACEScontacts::InitInstance() {
 
   options.load();    view()->setOrientation(options.orient);
 
-  doc()->getDBpath();   doc()->loadDatabase();
+  doc()->initialLoad();
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }

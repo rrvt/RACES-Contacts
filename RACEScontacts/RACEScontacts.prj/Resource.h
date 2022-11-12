@@ -36,29 +36,3 @@
 #endif
 #endif
 
-
-
-
-#ifdef Examples
-#define IDC_CB                          200
-#define IDC_CB1                         201
-#define IDC_MyBtn                       202
-#define IDC_MyBtn1                      203
-#endif
-#ifdef Examples
-#define ID_Test                         405
-#define ID_SelDataStr                   406
-#define ID_MyBtn                        407
-#define ID_MyBtn1                       408
-#define ID_CB                           409
-#define ID_CB1                          410
-#define ID_EditBox                      411
-#define ID_Option1                      412
-#define ID_Option2                      413
-#define ID_Option3                      414
-#define ID_Btn2                         415
-#define ID_Option21                     416
-#define ID_Option22                     417
-#define ID_Option23                     418
-#endif
-

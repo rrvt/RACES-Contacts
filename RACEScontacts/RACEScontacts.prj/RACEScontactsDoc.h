@@ -13,14 +13,12 @@ enum DataSource {NotePadSrc, StoreSrc, StoreCSVSrc, FontSrc};
 
 class RACEScontactsDoc : public CDoc {
 
-PathDlgDsc  pathDlgDsc;
-
 DataSource  dataSource;
 StoreSort   storeSort;
 
 
-String databasePath;
-String outputPath;
+String      dbPath;
+String      outputPath;
 
 protected: // create from serialization only
 
@@ -28,6 +26,8 @@ protected: // create from serialization only
   DECLARE_DYNCREATE(RACEScontactsDoc)
 
 public:
+
+  void       initialLoad();
 
   DataSource dataSrc() {return dataSource;}
   void       display(DataSource ds);
@@ -39,7 +39,6 @@ public:
   virtual ~RACEScontactsDoc();
 
   void     getDBpath();
-  void     loadDatabase();
 
 
 #ifdef _DEBUG
@@ -49,8 +48,8 @@ public:
 
 private:
 
-//  void   testLine(int n);
-//  void   wholePage();
+  void   loadDatabase();
+
   String readOutputPath();
   void   saveOutputPath(TCchar* path);
 
@@ -72,25 +71,4 @@ public:
 
   afx_msg void OnOptions();
   };
-
-
-
-
-#ifdef Examples
-  afx_msg void OnTest();
-  afx_msg void displayDataStore();
-  afx_msg void myButton();
-
-  afx_msg void OnComboBoxChng();
-
-  afx_msg void OnTBEditBox();
-  afx_msg void myButton1();
-  afx_msg void onOption1();
-  afx_msg void onOption2();
-  afx_msg void onOption3();
-  afx_msg void onOption21();
-  afx_msg void onOption22();
-  afx_msg void onOption23();
-  afx_msg void OnTestEditBoxes();
-#endif
 
