@@ -61,14 +61,14 @@
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile/>
       <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\AccessDB.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <BasicRuntimeChecks />
+      <BasicRuntimeChecks/>
       <SupportJustMyCode>false</SupportJustMyCode>
-      <PrecompiledHeaderOutputFile />
+      <PrecompiledHeaderOutputFile/>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -102,12 +102,12 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeaderFile />
+      <PrecompiledHeaderFile/>
       <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\Library.prj\;$(SolutionDir)..\..\Library\AccessDB.prj\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat />
+      <DebugInformationFormat/>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <BasicRuntimeChecks />
-      <PrecompiledHeaderOutputFile />
+      <BasicRuntimeChecks/>
+      <PrecompiledHeaderOutputFile/>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -118,7 +118,7 @@
       <AdditionalDependencies>Htmlhelp.lib</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <ProgramDatabaseFile />
+      <ProgramDatabaseFile/>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -135,7 +135,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Library\Extras\AboutDlg.h" />
-    <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="framework.h" />
@@ -149,6 +148,8 @@
     <ClInclude Include="Store.h" />
     <ClInclude Include="StoreRpt.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="..\..\Library\Extras\ResourceExtra.h" />
+  <ClInclude Include="..\..\Library\Extras\RptOrientDlgTwo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="RACEScontactsView.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="StoreRpt.cpp" />
+  <ClCompile Include="..\..\Library\Extras\RptOrientDlgTwo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RACEScontacts.rc" />
@@ -171,7 +173,8 @@
     <None Include="..\..\Library\Extras\About.rc2" />
     <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="res\RACEScontacts.rc2" />
-    <None Include="res\ShortToolbar02.bmp" />
+    <None Include="res\Toolbar.bmp" />
+  <None Include="..\..\Library\Extras\RptOrientTwo.rc2" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\RACEScontacts.ico" />

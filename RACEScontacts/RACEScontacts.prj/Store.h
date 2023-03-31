@@ -4,7 +4,7 @@
 #pragma once
 #include "Archive.h"
 #include "Date.h"
-#include "Device.h"
+#include "DevBase.h"
 #include "ExpandableP.h"
 #include "IterT.h"
 #include "qsort.h"

@@ -68,7 +68,5 @@ public:
 
   afx_msg void csvSaveByName();
   afx_msg void csvSaveByFCC();
-
-  afx_msg void OnOptions();
   };
 

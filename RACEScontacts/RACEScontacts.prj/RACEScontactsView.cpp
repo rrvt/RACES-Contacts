@@ -3,10 +3,16 @@
 
 #include "pch.h"
 #include "RACEScontactsView.h"
+#include "IniFile.h"
+#include "OptionsDlg.h"
 #include "RACEScontacts.h"
 #include "RACEScontactsDoc.h"
-#include "Options.h"
+#include "Resource.h"
 #include "Resources.h"
+#include "RptOrientDlgTwo.h"
+
+
+static TCchar* StrOrietnKey = _T("Store");
 
 
 // RACEScontactsView
@@ -14,12 +20,13 @@
 IMPLEMENT_DYNCREATE(RACEScontactsView, CScrView)
 
 BEGIN_MESSAGE_MAP(RACEScontactsView, CScrView)
+  ON_COMMAND(ID_Options,     &onOptions)
+  ON_COMMAND(ID_Orientation, &onRptOrietn)
 END_MESSAGE_MAP()
 
 
 RACEScontactsView::RACEScontactsView() noexcept :
-                                    dspStore(dMgr.getNotePad()), prtStore(pMgr.getNotePad()),
-                                    dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
+                                                dspStore(dMgr.getNotePad()), prtStore(pMgr.getNotePad()) {
 ResourceData res;
 String       pn;
   if (res.getProductName(pn)) prtNote.setTitle(pn);
@@ -32,46 +39,69 @@ BOOL RACEScontactsView::PreCreateWindow(CREATESTRUCT& cs) {
   }
 
 
-void RACEScontactsView::OnPrepareDC(CDC* pDC, CPrintInfo* pInfo) {
-uint   x;
-double topMgn   = options.topMargin.stod(x);
-double leftMgn  = options.leftMargin.stod(x);
-double rightMgn = options.rightMargin.stod(x);
-double botMgn   = options.botMargin.stod(x);
+void RACEScontactsView::onOptions() {
+OptionsDlg dlg;
 
-  setMgns(leftMgn,  topMgn,  rightMgn, botMgn, pDC);   CScrView::OnPrepareDC(pDC, pInfo);
+  if (printer.name.isEmpty()) printer.load(0);
+
+  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
+  }
+
+
+void RACEScontactsView::onRptOrietn() {
+RptOrietnDlg dlg;
+
+  dlg.lbl01 = _T("Store:");
+  dlg.ntpd = printer.toStg(prtNote.prtrOrietn);
+  dlg.rpt1 = printer.toStg(prtStore.prtrOrietn);
+
+  if (dlg.DoModal() == IDOK) {
+    prtNote.prtrOrietn  = printer.toOrient(dlg.ntpd);
+    prtStore.prtrOrietn = printer.toOrient(dlg.rpt1);
+    saveRptOrietn();
+    }
+  }
+
+
+void RACEScontactsView::initRptOrietn() {
+  prtStore.prtrOrietn = (PrtrOrient) iniFile.readInt(RptOrietnSect, StrOrietnKey, PortOrient);
+  }
+
+
+void RACEScontactsView::saveRptOrietn() {
+  saveNoteOrietn();
+  iniFile.write(RptOrietnSect, StrOrietnKey,  (int) prtStore.prtrOrietn);
+  }
+
+
+void RACEScontactsView::onPreparePrinting(CPrintInfo* info) {
+
+  switch(doc()->dataSrc()) {
+    case NotePadSrc : prtNote.onPreparePrinting(info);     break;
+#ifdef Examples
+    case StoreSrc   : prtStore.onPreparePrinting(info);    break;
+#endif
+    }
   }
 
 
 // Perpare output (i.e. report) then start the output with the call to SCrView
 
-void RACEScontactsView::onPrepareOutput(bool printing) {
-DataSource ds = doc()->dataSrc();
+void RACEScontactsView::onBeginPrinting() {
 
-  if (printing)
-    switch(ds) {
-      case NotePadSrc : prtNote.print(*this);  break;
-      case StoreSrc   : prtStore.print(*this); break;
-      }
-
-  else
-    switch(ds) {
-      case NotePadSrc : dspNote.display(*this);  break;
-      case StoreSrc   : dspStore.display(*this); break;
-      }
-
-
-  CScrView::onPrepareOutput(printing);
+  switch(doc()->dataSrc()) {
+    case NotePadSrc : prtNote.onBeginPrinting(*this);  break;
+    case StoreSrc   : prtStore.onBeginPrinting(*this); break;
+    }
   }
 
 
-void RACEScontactsView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
+void RACEScontactsView::onDisplayOutput() {
 
   switch(doc()->dataSrc()) {
-    case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
-    case StoreSrc   : setOrientation(options.orient); break;
+    case NotePadSrc : dspNote.display(*this);  break;
+    case StoreSrc   : dspStore.display(*this); break;
     }
-  setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
   }
 
 
@@ -79,10 +109,10 @@ void RACEScontactsView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should not
 // be a great hardship to construct a footer.
 
-void RACEScontactsView::printFooter(Device& dev, int pageNo) {
+void RACEScontactsView::printFooter(DevBase& dev, int pageNo) {
   switch(doc()->dataSrc()) {
-    case NotePadSrc : prtNote.footer(dev, pageNo);  break;
-    case StoreSrc   : prtStore.footer(dev, pageNo); break;
+    case NotePadSrc : prtNote.prtFooter(dev, pageNo);  break;
+    case StoreSrc   : prtStore.prtFooter(dev, pageNo); break;
     }
   }
 

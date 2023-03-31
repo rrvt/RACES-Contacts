@@ -11,47 +11,37 @@ static const int PhoneTab = 11;
 static const int FCCtab   = 8;
 
 
-void StoreRpt::print(CScrView& vw) {
+void StoreRpt::onBeginPrinting(CScrView& vw) {
 
   printing = true;
 
-  maxLines = vw.noLinesPrPg();
+  vw.disablePrtWrap();
 
-  vw.disableWrap(printing);
+  vw.getNoPages();
 
-  detNoPages(vw);
-
-  create(vw);
+  getData(vw);
   }
 
 
-void StoreRpt::create(CScrView& vw) {
+void StoreRpt::getData(CScrView& vw) {
 DSIter iter(store);
 Datum* dtm;
 int    i;
 int    n;
 
-  np.clear();   noLines = BigNmbr;  setMaxes();
+  np.clear();   setMaxes();
 
   for (i = 0, dtm = iter(); dtm; i++, dtm = iter++) {
 
     n = dtm->isThirdLine() ? 4 : 3;
 
-    if (noLines + n > maxLines) {
+    setTabs();    line1(dtm);
 
-      if (i) np << nEndPage;
+    setTabs2();   line2(dtm);
 
-      noLines = header(np, printing);
-      }
+    setTabs3();   line3(dtm);
 
-    setTabs();    line1(dtm);   noLines++;
-
-    setTabs2();   line2(dtm);   noLines++;
-
-    setTabs3();   line3(dtm);               // conditional line
-
-    np << nCrlf;                noLines++;
-
+    np << nCrlf;
     }
   }
 
@@ -83,7 +73,7 @@ void StoreRpt::line3(Datum* dtm) {
 
   if (dtm->isThirdLine()) {
     np << nTab << dtm->employer << nTab << formatPhone(dtm->wrkPhone);
-    np << nTab << dtm->wrkEmail << nCrlf;     noLines += 1;
+    np << nTab << dtm->wrkEmail << nCrlf;
     }
   }
 
@@ -114,15 +104,12 @@ int    n = s.length();   if (!n) return _T("          ");
   }
 
 
-int StoreRpt::header(NotePad& np, bool printing) {
-int nLines;
+void StoreRpt::prtHeader(DevBase& dev, int pageNo) {
 
-  setTabs();   hdrLine1();   nLines = 2;
-
-  setTabs2();  hdrLine2();   nLines++;
-
-  setTabs3();  hdrLine3();   nLines++;
-  np << nCrlf;               nLines++;    return nLines;
+  setTabs();   hdrLine1(dev);
+  setTabs2();  hdrLine2(dev);
+  setTabs3();  hdrLine3(dev);
+  dev << dCrlf;
   }
 
 
@@ -155,35 +142,36 @@ int tab3 = tab2 + PhoneTab;
   }
 
 
-void StoreRpt::hdrLine1() {
+void StoreRpt::hdrLine1(DevBase& dev) {
 String s = store.date() + _T(" ") + store.time();
 
-  np << store.name << nRight << s << nCrlf;
+  dev << store.name << dRight << s << dCrlf;
 
-  if (store.storeSort == FCCsort) np << _T("Call Sign") << nTab << _T("Member Name");
-  else                            np << _T("Member Name") << nTab << _T("Call Sign");
-  np << nTab << _T("Primary Phone");
-  np << nTab << _T("Cell Phone");
-  np << nTab << _T("Primary Text");
-  np << nTab << _T("Secdry Text");
-  np << nCrlf;
+  if (store.storeSort == FCCsort) dev << _T("Call Sign") << dTab << _T("Member Name");
+  else                            dev << _T("Member Name") << dTab << _T("Call Sign");
+  dev << dTab << _T("Primary Phone");
+  dev << dTab << _T("Cell Phone");
+  dev << dTab << _T("Primary Text");
+  dev << dTab << _T("Secdry Text");
+  dev << dCrlf;
   }
 
 
-void StoreRpt::hdrLine2() {np << nTab << _T("Primary eMail") << nTab << _T("Secondary eMail") << nCrlf;}
+void StoreRpt::hdrLine2(DevBase& dev)
+                          {dev << dTab << _T("Primary eMail") << dTab << _T("Secondary eMail") << dCrlf;}
 
 
-void StoreRpt::hdrLine3() {
-  np << nBeginLine << nTab << _T("Employer") << nTab << _T("Work Phone") << nTab << _T("work eMail");
-  np << nRight << nEndLine << nCrlf;
+void StoreRpt::hdrLine3(DevBase& dev) {
+  dev << dBeginLine << dTab << _T("Employer") << dTab << _T("Work Phone") << dTab << _T("work eMail");
+  dev << dRight << dEndLine << dCrlf;
   }
 
 
-void StoreRpt::footer(Device& dev, int pageN) {
+void StoreRpt::prtFooter(DevBase& dev, int pageN) {
 
   if (pageN > maxPages) maxPages = pageN;
 
-  dev << dRight << pageN << _T(" of ") << maxPages << dFlushFtr;
+  dev << dCenter << pageN << _T(" of ") << maxPages << dFlushFtr;
   }
 
 

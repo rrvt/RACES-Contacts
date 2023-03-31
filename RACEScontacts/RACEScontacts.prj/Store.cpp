@@ -106,10 +106,10 @@ StoreRpt rpt(notePad);
 
   notePad.clear();   rpt.setMaxes();
 
-  setTabs1(rpt); rpt.hdrLine1();
-  setTabs2(rpt); rpt.hdrLine2();
-  setTabs3(rpt); rpt.hdrLine3();
-  for (int i = 0; i < 106; i++) notePad << _T("-");    notePad << nCrlf;
+//  setTabs1(rpt); rpt.hdrLine1();
+//  setTabs2(rpt); rpt.hdrLine2();
+//  setTabs3(rpt); rpt.hdrLine3();
+//  for (int i = 0; i < 106; i++) notePad << _T("-");    notePad << nCrlf;
 
   for (dtm = iter(); dtm; dtm = iter++) {
     setTabs1(rpt); rpt.line1(dtm);

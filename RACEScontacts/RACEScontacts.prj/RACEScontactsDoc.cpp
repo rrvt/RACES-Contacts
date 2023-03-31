@@ -4,16 +4,15 @@
 #include "pch.h"
 #include "RACEScontactsDoc.h"
 #include "Database.h"
-#include "ExtraResource.h"
 #include "filename.h"
 #include "GetPathDlg.h"
 #include "IniFile.h"
 #include "MessageBox.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "Resource.h"
 #include "RACEScontacts.h"
 #include "RACEScontactsView.h"
+#include "ResourceExtra.h"
 #include "ToolBar.h"
 
 
@@ -39,7 +38,6 @@ BEGIN_MESSAGE_MAP(RACEScontactsDoc, CDoc)
   ON_COMMAND(ID_CSVByFCC,      &csvSaveByFCC)
 
   ON_COMMAND(ID_File_Save,     &OnFileSave)
-  ON_COMMAND(ID_Options,       &OnOptions)
 END_MESSAGE_MAP()
 
 
@@ -78,9 +76,6 @@ void RACEScontactsDoc::loadDatabase() {
 
   store.name = _T("Contact List");   store.dt.getToday();   store.load();  display(NotePadSrc);
   }
-
-
-void RACEScontactsDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
 
 
 void RACEScontactsDoc::onSortByName() {storeSort = NameSort;    store.sortByName();   display(StoreSrc);}

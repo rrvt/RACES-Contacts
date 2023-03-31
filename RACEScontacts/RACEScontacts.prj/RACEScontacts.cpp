@@ -4,13 +4,12 @@
 #include "pch.h"
 #include "RACEScontacts.h"
 #include "AboutDlg.h"
-#include "ExtraResource.h"
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "RACEScontactsDoc.h"
 #include "RACEScontactsView.h"
+#include "ResourceExtra.h"
 
 
 RACEScontacts theApp;                       // The one and only RACEScontacts object
@@ -71,25 +70,9 @@ BOOL RACEScontacts::InitInstance() {
 
   view()->setFont(_T("Arial"), 12.0);
 
-  options.load();    view()->setOrientation(options.orient);
-
   doc()->initialLoad();
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
-  }
-
-
-
-void RACEScontacts::OnFilePrintSetup() {
-PrtrOrient orient;
-
-  view()->setPrntrOrient(getDevMode());
-
-    CWinApp::OnFilePrintSetup();
-
-  orient = view()->getPrntrOrient(getDevMode());
-
-  options.setOrient(orient);   view()->setOrientation(options.orient);
   }
 
 

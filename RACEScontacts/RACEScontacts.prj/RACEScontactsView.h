@@ -12,8 +12,6 @@ class RACEScontactsDoc;
 
 class RACEScontactsView : public CScrView {
 
-NotePadRpt dspNote;
-NotePadRpt prtNote;
 StoreRpt   dspStore;
 StoreRpt   prtStore;
 
@@ -27,13 +25,16 @@ public:
 
   virtual ~RACEScontactsView() { }
 
+  virtual void initRptOrietn();
+  virtual void saveRptOrietn();
+
   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
-  virtual void onPrepareOutput(bool printing);
+  virtual void onPreparePrinting(CPrintInfo* info);
+  virtual void onBeginPrinting();
+  virtual void onDisplayOutput();
 
-  virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-  virtual void printFooter(Device& dev, int pageNo);
+  virtual void printFooter(DevBase& dev, int pageNo);
   virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
   RACEScontactsDoc* GetDocument() const;
@@ -49,6 +50,8 @@ public:
 
   DECLARE_MESSAGE_MAP()
 
+  afx_msg void onOptions();
+  afx_msg void onRptOrietn();
   afx_msg void OnSetFocus(CWnd* pOldWnd);
   };
 

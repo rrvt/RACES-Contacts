@@ -19,15 +19,16 @@ int maxEmail;
   StoreRpt(NotePad& notePad) : ReportBase(notePad) { }
  ~StoreRpt() { }
 
-  void   print(CScrView& vw);
-                                                    // number of pages that will be produced
-  void   footer(Device& dev, int pageNo);          // Output page Footer to NotePad
+  void   onBeginPrinting(CScrView& vw);
+
+  void   prtHeader(DevBase& dev, int pageNo = 1);
+  void   prtFooter(DevBase& dev, int pageNo);
 
   void   setMaxes();
 
-  void   hdrLine1();
-  void   hdrLine2();
-  void   hdrLine3();
+  void   hdrLine1(DevBase& dev);
+  void   hdrLine2(DevBase& dev);
+  void   hdrLine3(DevBase& dev);
   void   line1(Datum* dtm);
   void   line2(Datum* dtm);
   void   line3(Datum* dtm);
@@ -35,12 +36,16 @@ int maxEmail;
 
 private:
 
-  void   create(CScrView& vw);
-  int    header(NotePad& np, bool printing);
+  void   getData(CScrView& vw);
   void   setTabs();
   void   setTabs2();
   void   setTabs3();
 
   StoreRpt() : ReportBase(*(NotePad*)0) { }
   };
+
+
+
+
+//  int    header(NotePad& np, bool printing);
 
