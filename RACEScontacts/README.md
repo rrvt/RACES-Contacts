@@ -48,9 +48,9 @@ The msi file will install the application.
 
 ## Updates
 
-### Update
+### Update 12/25/23
 
-Library Update.
+Modify ExpandableP and subsequent ripple.
 
 ### Update 3/30/23
 
