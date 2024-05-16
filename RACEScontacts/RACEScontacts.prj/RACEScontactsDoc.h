@@ -5,8 +5,6 @@
 #include "CDoc.h"
 #include "MainFrame.h"
 #include "Store.h"
-#include "TBComboBox.h"
-#include "TBEditBox.h"
 
 
 enum DataSource {NotePadSrc, StoreSrc, StoreCSVSrc, FontSrc};

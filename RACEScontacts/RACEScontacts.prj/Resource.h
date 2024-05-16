@@ -6,8 +6,8 @@
 #define IDR_ToolBarImages               101
 #define IDR_PopupMenu                   102
 #define IDR_PopupMenu2                  103
-#define IDR_MemberStatus                104
-#define IDR_CSVsaveFileMode             105
+#define IDR_ContactList                 104
+#define IDR_CSVfileSave             105
 
 #define ID_File_New                     400
 #define ID_File_Open                    401

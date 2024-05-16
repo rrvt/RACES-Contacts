@@ -142,6 +142,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="IDitem.h" />
     <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="MyToolBar.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RACEScontacts.h" />
     <ClInclude Include="RACEScontactsDoc.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="RACEScontacts.cpp" />
     <ClCompile Include="RACEScontactsDoc.cpp" />
@@ -182,8 +184,8 @@
     <Image Include="res\RACEScontacts.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Library\Library.prj\Library.vcxproj">
-      <Project>{DC26E782-51F1-47D0-AA46-6629711A15B4}</Project>
+    <ProjectReference Include="..\..\Library\Library\Library.vcxproj">
+      <Project>{cf57f3ec-d3db-4469-8519-3f9d73785d9b}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

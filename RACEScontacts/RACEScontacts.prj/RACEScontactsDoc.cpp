@@ -13,7 +13,7 @@
 #include "RACEScontacts.h"
 #include "RACEScontactsView.h"
 #include "ResourceExtra.h"
-#include "ToolBar.h"
+#include "MyToolBar.h"
 
 
 

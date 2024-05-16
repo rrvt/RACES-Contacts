@@ -88,10 +88,10 @@ afx_msg LRESULT MainFrame::OnResetToolBar(WPARAM wParam, LPARAM lParam) {setupTo
 
 
 void MainFrame::setupToolBar() {
-CRect winRect;   GetWindowRect(&winRect);   toolBar.initialize(winRect);
+CRect winRect;   GetWindowRect(&winRect);   toolBar.set(winRect);
 
-  toolBar.installMenu(ID_ContactList, IDR_MemberStatus,    _T("Sort Contacts"));
-  toolBar.installMenu(ID_CSVfileSave, IDR_CSVsaveFileMode, _T("Sort && Save CSV File"));
+  toolBar.addMenu(ID_ContactList, IDR_ContactList, _T("Sort Contacts"));
+  toolBar.addMenu(ID_CSVfileSave, IDR_CSVfileSave, _T("Sort && Save CSV File"));
   }
 
 
