@@ -48,9 +48,13 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 6/14/24
+
+Fix WinPos.
+
 ### Update 4/15/24
 
-Add MyToolBar class to deal with Dialog Box Toolbars.
+Add MyToolBar class to deal with the differences between Doc/View and Dialog Box Toolbars.
 
 ### Update 2/17/24
 
