@@ -2,85 +2,86 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
 <Product Id="*" UpgradeCode="99802274-951D-43E1-AA16-127709356895" Language="1033"
-         Manufacturer="Bob -- K6RWY" Name="RACEScontacts"
-         Version="!(bind.fileVersion.RACESContacts.cmp)"
-         >
+                Manufacturer="Bob -- K6RWY" Name="RACEScontacts"
+                Version="!(bind.fileVersion.RACES_Contacts.cmp)"
+                >
 
   <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"
-           Manufacturer="Bob -- K6RWY" Description="Installs RACEScontacts"
-           Comments="Copyright (c) Bob -- K6RWY"
-           />
+                Manufacturer="Bob -- K6RWY" Description="Installs RACEScontacts"
+                Comments="Copyright (c) Bob -- K6RWY"
+                />
 
   <MajorUpgrade Schedule="afterInstallInitialize"
                 AllowDowngrades="no"   IgnoreRemoveFailure="no"   AllowSameVersionUpgrades="no"
-                DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+                DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+                />
 
   <MediaTemplate EmbedCab="yes" />
 
-  <UI Id="My_InstallDir.ui">
-    <UIRef Id="WixUI_InstallDir" />
-    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">
-      NOT Installed
-    </Publish>
-    <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">
-      1
-    </Publish>
-  </UI>
+  <WixVariable Id="WixUILicenseRtf"
+                              Value="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" />
+  <UI Id="My_InstallDir.ui"><UIRef Id="WixUI_InstallDir" /></UI>
 
   <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp"/>
   <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp"/>
 
   <Icon     Id="RACEScontactsIcon.ico"
-                          SourceFile="$(var.SolutionDir)..\RACEScontacts.prj\res\RACEScontacts.ico"/>
+                        SourceFile="$(var.SolutionDir)..\RACEScontacts.prj\res\RACEScontacts.ico"/>
+  <Icon     Id="MITLicense_Icon.exe"
+                              SourceFile="$(var.SolutionDir)..\..\Library\License\MITLicense.ico"/>
   <Property Id="ARPPRODUCTICON"  Value="RACEScontactsIcon.ico" />
 
   <Feature Id="ProductFeatures" Title="Main Product" Level="1" >
     <ComponentGroupRef Id="RACEScontacts.ftr"/>
-    <ComponentGroupRef Id="UninstallRACESContacts.ftr"/>
+    <ComponentGroupRef Id="License.ftr"/>
+    <ComponentGroupRef Id="Uninstall_RACES_Contacts.ftr"/>
   </Feature>
 </Product>
 
 <Fragment>
-<ComponentGroup Id="RACEScontacts.ftr">
-  <ComponentRef Id="RACESContacts.cmp"/>
-  <ComponentRef Id="Help.cmp"/>
-</ComponentGroup>
-<ComponentGroup Id="UninstallRACESContacts.ftr">
-  <ComponentRef Id="UninstallRACESContacts.cmp"/>
-</ComponentGroup>
+  <ComponentGroup Id="RACEScontacts.ftr">
+    <ComponentRef Id="RACES_Contacts.cmp"/>
+    <ComponentRef Id="Help.cmp"/>
+  </ComponentGroup>
+  <ComponentGroup Id="License.ftr">
+    <ComponentRef Id="MIT_License.cmp"/>
+  </ComponentGroup>
+  <ComponentGroup Id="Uninstall_RACES_Contacts.ftr">
+    <ComponentRef Id="Uninstall_RACES_Contacts.cmp"/>
+  </ComponentGroup>
 </Fragment>
 
 <!--Directory structure-->
 <Fragment>
   <Directory Id="TARGETDIR" Name="SourceDir">
     <Directory Id="ProgramFilesFolder">
-      <Directory Id="RACEScontacts.pff" Name="RACEScontacts" />
+      <Directory Id="RACESCONTACTS.PFF" Name="RACEScontacts" />
     </Directory>
 
-    <Directory Id="ProgramMenuFolder" Name="StartMenu">
-      <Directory Id="RACESContacts.pmf" Name="RACES Contacts" />
+    <Directory Id="ProgramMenuFolder">
+      <Directory Id="RACES_Contacts.pmf" Name="RACES Contacts" />
     </Directory>
 
-    <Directory Id="DesktopFolder" Name="Desktop" />
+    <Directory Id="DesktopFolder" />
   </Directory>
 
   <Property Id="ApplicationFolderName" Value="RACEScontacts" />
-  <Property Id="WIXUI_INSTALLDIR"      Value="RACEScontacts.pff"/>
+  <Property Id="WIXUI_INSTALLDIR"      Value="RACESCONTACTS.PFF"/>
   <Property Id="WixAppFolder"          Value="WixPerMachineFolder" />
 </Fragment>
 
 <Fragment>
-
-  <Component Id="RACESContacts.cmp"  Guid="BE559202-54BD-447C-9634-2D774A51BABF"
-                                                                        Directory="RACEScontacts.pff">
-    <File Id="RACESContacts.cmp" Source="$(var.SolutionDir)..\Release\RACEScontacts.exe" KeyPath="yes"/>
+  <Component Id="RACES_Contacts.cmp" Guid="BE559202-54BD-447C-9634-2D774A51BABF"
+                                                                     Directory="RACESCONTACTS.PFF">
+    <File Id="RACES_Contacts.cmp"
+                            Source="$(var.SolutionDir)..\Release\RACEScontacts.exe" KeyPath="yes"/>
 
     <Shortcut Id               = "RACESContacts.shc"
               Name             = "RACES Contacts"
               Description      = "Generate contact List from RACES Database"
               Advertise        = "yes"
-              Directory        = "RACESContacts.pmf"
-              WorkingDirectory = "RACEScontacts.pff"
+              Directory        = "RACES_Contacts.pmf"
+              WorkingDirectory = "RACESCONTACTS.PFF"
               Icon             = "RACEScontactsIcon.ico"
               />
 
@@ -89,21 +90,36 @@
               Description      = "Generate contact List from RACES Database"
               Advertise        = "yes"
               Directory        = "DesktopFolder"
-              WorkingDirectory = "RACEScontacts.pff"
+              WorkingDirectory = "RACESCONTACTS.PFF"
               Icon             = "RACEScontactsIcon.ico"
               />
   </Component>
 
-  <Component Id="Help.cmp"  Guid="5B743869-6765-4D94-9E04-F8D9864A85AD" Directory="RACEScontacts.pff">
+  <Component Id="Help.cmp" Guid="5B743869-6765-4D94-9E04-F8D9864A85AD"
+                                                                     Directory="RACESCONTACTS.PFF">
     <File Id="Help.cmp" Source="$(var.SolutionDir)..\Release\RACEScontacts.chm" KeyPath="yes"/>
   </Component>
-
 </Fragment>
 
 <Fragment>
+  <Component Id="MIT_License.cmp" Guid="ADE0BA37-5552-4231-98EA-FE9794BB7CD6"
+                                                                     Directory="RACESCONTACTS.PFF">
+    <File Id="MIT_License.cmp"
+                Source="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" KeyPath="yes"/>
 
-  <Component Id="UninstallRACESContacts.cmp" 
-                            Guid="24B8FF51-16AA-4371-A3F3-0772B18B4DC9" Directory="RACESContacts.pmf">
+    <Shortcut Id               = "MITLicense.shc"
+              Name             = "MIT License"
+              Advertise        = "yes"
+              Directory        = "RACES_Contacts.pmf"
+              WorkingDirectory = "RACESCONTACTS.PFF"
+              Icon             = "MITLicense_Icon.exe"
+              />
+  </Component>
+</Fragment>
+
+<Fragment>
+  <Component Id="Uninstall_RACES_Contacts.cmp"
+                        Guid="0DC18768-5AE0-4795-95BB-3E975F6FE1B1" Directory="RACES_Contacts.pmf">
 
     <Shortcut Id               = "UninstallRACESContacts.shc"
               Name             = "Uninstall RACES Contacts"
@@ -112,11 +128,9 @@
               Arguments        = "/x [ProductCode]"
               Icon             = "RACEScontactsIcon.ico"
               />
-    <RemoveFolder Id="RACESContacts.uni" Directory="RACESContacts.pmf" On="uninstall"/>
-    <RegistryValue Root="HKCU" Key="Software\UninstallRACESContacts.cmp" Name="installed"
-                   Type="integer" Value="1" KeyPath="yes"/>
+    <RemoveFolder Id="RACES_Contacts.uni" Directory="RACES_Contacts.pmf" On="uninstall"/>
+    <RegistryValue Root="HKCU" Key="Software\Uninstall_RACES_Contacts.cmp"
+                                          Name="installed" Type="integer" Value="1" KeyPath="yes"/>
   </Component>
-
 </Fragment>
-
 </Wix>

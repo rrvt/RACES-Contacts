@@ -1,34 +1,43 @@
 [SolutionInfo]
+RootPath=D:\Sources\RACEScontacts
 Path=D:\Sources\RACEScontacts\RACEScontacts\RACEScontacts.sln
 Name=RACEScontacts
-Version=2.0
+Version=2.100000
 [DefaultPath]
-NPaths=2
+NPaths=4
 DefKey0=Icon
-Icon.Path=D:\Sources\RACEScontacts\RACEScontacts.prj\res\
+Icon.Path=D:\Sources\Library\License\
 DefKey1=RACEScontacts.ftr
 RACEScontacts.ftr.Path=D:\Sources\RACEScontacts\Release\
+DefKey2=License.ftr
+License.ftr.Path=D:\Sources\Library\License\
+DefKey3=License
+License.Path=D:\Sources\Library\License\
 [Icons]
-NoIcons=1
+NoIcons=2
 [Icon00]
 IconID=RACEScontacts
 WixID=RACEScontactsIcon.ico
 IconPath=D:\Sources\RACEScontacts\RACEScontacts.prj\res\RACEScontacts.ico
+[Icon01]
+IconID=MITLicense
+WixID=MITLicense_Icon.exe
+IconPath=D:\Sources\Library\License\MITLicense.ico
 [Product]
 ProductName=RACEScontacts
 Company=Bob -- K6RWY
 WixName=RACEScontacts
-WixVersion=1.0.0.0
-UpgradeGUID=99802274-951D-43E1-AA16-127709356895
+WixVersion=1.1.0.0
+UpgradeCode=99802274-951D-43E1-AA16-127709356895
 SaveVerAllowed=0
-LicenseRequired=0
-LicensePath=D:\Sources\RACEScontacts\RACEScontacts\
+LicenseRequired=1
+LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=RACEScontacts
 [PFFDirectories]
 NoDirectories=1
 [PFFDirDesc00]
 ID=RACEScontacts
-WixID=RACEScontacts.pff
+WixID=RACESCONTACTS.PFF
 Parent=
 Name=RACEScontacts
 HasChildren=0
@@ -36,13 +45,13 @@ HasChildren=0
 NoDirectories=1
 [PMFDirDesc00]
 ID=RACES Contacts
-WixID=RACESContacts.pmf
+WixID=RACES_Contacts.pmf
 Parent=
 Name=RACES Contacts
 HasChildren=0
 [Features]
-Count=1
-CurSel=RACEScontacts
+Count=2
+CurSel=License
 [Ftr00]
 FeatureID=RACEScontacts
 ProgramID=RACEScontacts
@@ -62,3 +71,15 @@ IsVersionAvail=1
 ID=Help
 Path=D:\Sources\RACEScontacts\Release\RACEScontacts.chm
 Guid=5B743869-6765-4D94-9E04-F8D9864A85AD
+[Ftr01]
+FeatureID=License
+ProgramID=RACEScontacts
+StartMenuID=RACES Contacts
+CurSel=MIT License
+NoComponents=1
+[Ftr01Cmp00]
+ID=MIT License
+Path=D:\Sources\Library\License\MITLicenseFile.rtf
+Guid=ADE0BA37-5552-4231-98EA-FE9794BB7CD6
+IconID=MITLicense
+IsStartMenu=1
