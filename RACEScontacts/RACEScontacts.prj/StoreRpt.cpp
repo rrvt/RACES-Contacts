@@ -19,11 +19,11 @@ void StoreRpt::onBeginPrinting(CScrView& vw) {
 
   vw.getNoPages();
 
-  getData(vw);
+  getData();
   }
 
 
-void StoreRpt::getData(CScrView& vw) {
+void StoreRpt::getData() {
 DSIter iter(store);
 Datum* dtm;
 int    i;
@@ -104,7 +104,7 @@ int    n = s.length();   if (!n) return _T("          ");
   }
 
 
-void StoreRpt::prtHeader(DevBase& dev, int pageNo) {
+void StoreRpt::prtHeader(DevStream& dev, int pageNo) {
 
   setTabs();   hdrLine1(dev);
   setTabs2();  hdrLine2(dev);
@@ -142,7 +142,7 @@ int tab3 = tab2 + PhoneTab;
   }
 
 
-void StoreRpt::hdrLine1(DevBase& dev) {
+void StoreRpt::hdrLine1(DevStream& dev) {
 String s = store.date() + _T(" ") + store.time();
 
   dev << store.name << dRight << s << dCrlf;
@@ -157,17 +157,17 @@ String s = store.date() + _T(" ") + store.time();
   }
 
 
-void StoreRpt::hdrLine2(DevBase& dev)
+void StoreRpt::hdrLine2(DevStream& dev)
                           {dev << dTab << _T("Primary eMail") << dTab << _T("Secondary eMail") << dCrlf;}
 
 
-void StoreRpt::hdrLine3(DevBase& dev) {
+void StoreRpt::hdrLine3(DevStream& dev) {
   dev << dBeginLine << dTab << _T("Employer") << dTab << _T("Work Phone") << dTab << _T("work eMail");
   dev << dRight << dEndLine << dCrlf;
   }
 
 
-void StoreRpt::prtFooter(DevBase& dev, int pageN) {
+void StoreRpt::prtFooter(DevStream& dev, int pageN) {
 
   if (pageN > maxPages) maxPages = pageN;
 

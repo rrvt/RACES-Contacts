@@ -133,7 +133,7 @@ void RACEScontactsDoc::serialize(Archive& ar) {
 
   if (ar.isStoring())
     switch(dataSource) {
-      case NotePadSrc : notePad.archive(ar); return;
+      case NotePadSrc : ar << notePad; return;
       case StoreSrc   : if (storeSort == FCCsort) store.sortByFCC();
                         else                      store.sortByName();
 

@@ -118,7 +118,7 @@ StoreRpt rpt(notePad);
     notePad << nCrlf;
     }
 
-  notePad.archive(ar);
+  ar << notePad;
 
   notePad.clear();
   }
@@ -165,7 +165,7 @@ Datum*   dtm;
     csvLine1(dtm); csvLine2(dtm); csvLine3(dtm); notePad << nCrlf;
     }
 
-  notePad.archive(ar);   notePad.clear();
+  ar << notePad;   notePad.clear();
   }
 
 

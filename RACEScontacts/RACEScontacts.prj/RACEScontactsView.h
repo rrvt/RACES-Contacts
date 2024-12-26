@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
+#include "ReportNtPd.h"
 #include "StoreRpt.h"
 
 
@@ -23,21 +23,24 @@ protected: // create from serialization only
 
 public:
 
-  virtual ~RACEScontactsView() { }
+  virtual           ~RACEScontactsView() { }
 
-  virtual void initRptOrietn();
-  virtual void saveRptOrietn();
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn();
+  virtual void       saveRptOrietn();
+  virtual PrtrOrient getOrientation() {return prtNote.prtrOrietn;}
 
-  virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+  virtual BOOL       PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void onPreparePrinting(CPrintInfo* info);
-  virtual void onBeginPrinting();
-  virtual void onDisplayOutput();
+  virtual void       onDisplayOutput();
 
-  virtual void printFooter(DevBase& dev, int pageNo);
-  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void       onPreparePrinting(CPrintInfo* info);
+  virtual void       onBeginPrinting();
+  virtual void       printFooter(DevStream& dev, int pageNo);
+  virtual void       OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
-  RACEScontactsDoc* GetDocument() const;
+  RACEScontactsDoc*  GetDocument() const;
 
 public:
 

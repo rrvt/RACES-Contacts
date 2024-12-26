@@ -8,7 +8,7 @@
 #include "RACEScontacts.h"
 #include "RACEScontactsDoc.h"
 #include "Resource.h"
-#include "Resources.h"
+#include "ResourceData.h"
 #include "RptOrientDlgTwo.h"
 
 
@@ -109,7 +109,7 @@ void RACEScontactsView::onDisplayOutput() {
 // The output streaming functions are very similar to NotePad's streaming functions so it should not
 // be a great hardship to construct a footer.
 
-void RACEScontactsView::printFooter(DevBase& dev, int pageNo) {
+void RACEScontactsView::printFooter(DevStream& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NotePadSrc : prtNote.prtFooter(dev, pageNo);  break;
     case StoreSrc   : prtStore.prtFooter(dev, pageNo); break;

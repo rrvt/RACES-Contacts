@@ -130,6 +130,7 @@
     <None Include="..\..\Library\Extras\RptOrientTwo.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="C:\Users\rrvt\AppData\Roaming\RACEScontacts\RACEScontacts.ini" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\RACEScontacts.ico">

@@ -48,6 +48,11 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 12/26/24
+
+Split the library into DocLib and Library where DocLib supports the MFC Document/Library App
+projects and Library has support classes and supports the Dialog Apps with only one class.
+
 ### Update 8/7/24
 
 Library update.

@@ -16,19 +16,19 @@ int maxName;
 int maxEmpl;
 int maxEmail;
 
-  StoreRpt(NotePad& notePad) : ReportBase(notePad) { }
+  StoreRpt(NotePad& notePad) : ReportBase(notePad, ReportID) { }
  ~StoreRpt() { }
 
   void   onBeginPrinting(CScrView& vw);
 
-  void   prtHeader(DevBase& dev, int pageNo = 1);
-  void   prtFooter(DevBase& dev, int pageNo);
+  void   prtHeader(DevStream& dev, int pageNo = 1);
+  void   prtFooter(DevStream& dev, int pageNo);
 
   void   setMaxes();
 
-  void   hdrLine1(DevBase& dev);
-  void   hdrLine2(DevBase& dev);
-  void   hdrLine3(DevBase& dev);
+  void   hdrLine1(DevStream& dev);
+  void   hdrLine2(DevStream& dev);
+  void   hdrLine3(DevStream& dev);
   void   line1(Datum* dtm);
   void   line2(Datum* dtm);
   void   line3(Datum* dtm);
@@ -36,12 +36,12 @@ int maxEmail;
 
 private:
 
-  void   getData(CScrView& vw);
+  void   getData();
   void   setTabs();
   void   setTabs2();
   void   setTabs3();
 
-  StoreRpt() : ReportBase(*(NotePad*)0) { }
+  StoreRpt() : ReportBase(*(NotePad*)0, ReportID) { }
   };
 
 
