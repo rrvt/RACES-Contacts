@@ -4,7 +4,8 @@
 #include "pch.h"
 #include "RACEScontacts.h"
 #include "AboutDlg.h"
-#include "IniFile.h"
+#include "Database.h"
+#include "IniFileEx.h"
 #include "MainFrame.h"
 #include "NotePad.h"
 #include "RACEScontactsDoc.h"
@@ -13,7 +14,16 @@
 
 
 RACEScontacts theApp;                       // The one and only RACEScontacts object
-IniFile       iniFile;
+IniFileEx     iniFile(theApp);
+Database      database;
+AccessDB      accessDB;
+AdrTbl        adrTbl;
+AsnTbl        asnTbl;
+CtyTbl        ctyTbl;
+EntTbl        entTbl;
+LocTbl        locTbl;
+MbrTbl        mbrTbl;
+StsTbl        stsTbl;
 
 
 // RACEScontacts
@@ -32,7 +42,7 @@ BOOL RACEScontacts::InitInstance() {
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   notePad.clear();
 
@@ -77,12 +87,7 @@ BOOL RACEScontacts::InitInstance() {
 
 
 int RACEScontacts::ExitInstance() {
-
-#ifdef DebugMemoryLeaks
-  _CrtDumpMemoryLeaks();
-#endif
-
-  return CApp::ExitInstance();
+  notePad.~NotePad();   store.~Store();   return CApp::ExitInstance();
   }
 
 

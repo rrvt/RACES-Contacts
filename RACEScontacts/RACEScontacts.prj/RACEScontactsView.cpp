@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "RACEScontactsView.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "OptionsDlg.h"
 #include "RACEScontacts.h"
 #include "RACEScontactsDoc.h"

@@ -7,7 +7,7 @@ RACEScontacts.chm : *.htm RACEScontacts.hhp RACEScontacts.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F RACEScontacts.chm
+  if exist RACEScontacts.chm del /F RACEScontacts.chm
 
 
 Release/RACEScontacts.chm : RACEScontacts.chm
@@ -16,7 +16,7 @@ Release/RACEScontacts.chm : RACEScontacts.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del RACEScontacts.chm
+  if exist RACEScontacts.chm del /F RACEScontacts.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/RACEScontacts.chm : RACEScontacts.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del RACEScontacts.chm
+  if exist RACEScontacts.chm del /F RACEScontacts.chm
   cd $(MAKEDIR)
 
 

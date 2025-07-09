@@ -29,3 +29,5 @@ bool Database::load(TCchar* path) {
   return true;
   }
 
+
+Database::~Database() {accessDB.close();}
