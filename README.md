@@ -48,6 +48,14 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 10/21/25
+
+Factored library into three parts, Library, Dialog, DocView.
+
+### Update 9/19/25
+
+Changes to accomodate changes to ExpandableP.
+
 ### Update 7/8/25
 
 Update Database objects to suppress memory leak reporting.  Factored IniFile into three classes.

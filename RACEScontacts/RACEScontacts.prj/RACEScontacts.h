@@ -33,7 +33,7 @@ public:
 
 extern RACEScontacts theApp;
 
-inline void         invalidate() {theApp.invalidate();}
+
 inline RACEScontactsDoc*  doc()  {return theApp.doc();}
 inline RACEScontactsView* view() {return theApp.view();}
 
