@@ -7,10 +7,11 @@
   AssociatedFile="RACEScontacts.wix.wixproj"
   AssociatedFileType="microsoft visual studio">
   <Config
-    Name="Debug|x86"
+    Name="Release|x64"
     Type="vsproj"
     OutputFile=""
-    CompilerConfigName="">
+    CompilerConfigName=""
+    ObjectDir="bin\$(Platform)\$(Configuration)\">
     <Menu>
       <Target
         Name="Build"
@@ -63,10 +64,11 @@
     </Menu>
   </Config>
   <Config
-    Name="Release|x86"
+    Name="Debug|x64"
     Type="vsproj"
     OutputFile=""
-    CompilerConfigName="">
+    CompilerConfigName=""
+    ObjectDir="bin\$(Platform)\$(Configuration)\">
     <Menu>
       <Target
         Name="Build"

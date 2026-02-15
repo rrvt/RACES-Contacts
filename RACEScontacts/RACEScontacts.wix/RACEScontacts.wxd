@@ -8,7 +8,7 @@ NPaths=4
 DefKey0=Icon
 Icon.Path=D:\Sources\Library\License\
 DefKey1=RACEScontacts.ftr
-RACEScontacts.ftr.Path=D:\Sources\RACEScontacts\Release\
+RACEScontacts.ftr.Path=D:\Sources\RacesContacts\Release.x64\
 DefKey2=License.ftr
 License.ftr.Path=D:\Sources\Library\License\
 DefKey3=License
@@ -27,12 +27,15 @@ IconPath=D:\Sources\Library\License\MITLicense.ico
 ProductName=RACEScontacts
 Company=Bob -- K6RWY
 WixName=RACEScontacts
-WixVersion=1.1.0.0
+WixVersion=1.2.0.0
 UpgradeCode=99802274-951D-43E1-AA16-127709356895
 SaveVerAllowed=0
 LicenseRequired=1
 LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=RACEScontacts
+IsWin10=0
+IsWin7=0
+IsWinXP=0
 [PFFDirectories]
 NoDirectories=1
 [PFFDirDesc00]
@@ -60,7 +63,7 @@ CurSel=Help
 NoComponents=2
 [Ftr00Cmp00]
 ID=RACES Contacts
-Path=D:\Sources\RACEScontacts\Release\RACEScontacts.exe
+Path=D:\Sources\RacesContacts\Release.x64\RACEScontacts.exe
 Guid=BE559202-54BD-447C-9634-2D774A51BABF
 Description=Generate contact List from RACES Database
 IconID=RACEScontacts
@@ -69,7 +72,7 @@ IsDeskTop=1
 IsVersionAvail=1
 [Ftr00Cmp01]
 ID=Help
-Path=D:\Sources\RACEScontacts\Release\RACEScontacts.chm
+Path=D:\Sources\RacesContacts\Release.x64\RACEScontacts.chm
 Guid=5B743869-6765-4D94-9E04-F8D9864A85AD
 [Ftr01]
 FeatureID=License

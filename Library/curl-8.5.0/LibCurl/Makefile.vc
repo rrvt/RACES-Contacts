@@ -65,6 +65,8 @@ ENABLE_SSPI = $(USE_SSPI)
 # to "x86" when building in a 32 bit build environment on a 64 bit machine.
 !IF "$(PROCESSOR_ARCHITECTURE)"=="AMD64"
 MACHINE = x64
+!ELSEIF $(MACHINE)=="x64"
+MACHINE = x64
 !ELSE
 MACHINE = x86
 !ENDIF
@@ -304,6 +306,10 @@ copy_from_lib:
 	FOR %%i IN ($(CURLX_CFILES:/=\)) DO copy %%i ..\src\
 
 clean:
+  @echo LIBCURL_DIROBJ: $(LIBCURL_DIROBJ)
+  @echo CURL_DIROBJ:    $(CURL_DIROBJ)
+  @echo DIRDIST:        $(DIRDIST)
+
 	@if exist $(LIBCURL_DIROBJ) rd /s /q $(LIBCURL_DIROBJ)
 	@if exist $(CURL_DIROBJ) rd /s /q $(CURL_DIROBJ)
 	@if exist $(DIRDIST) rd /s /q $(DIRDIST)

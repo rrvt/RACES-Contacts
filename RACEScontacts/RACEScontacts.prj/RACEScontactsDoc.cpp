@@ -9,6 +9,7 @@
 #include "IniFileEx.h"
 #include "MessageBox.h"
 #include "NotePad.h"
+#include "PathDlgDsc.h"
 #include "Resource.h"
 #include "RACEScontacts.h"
 #include "RACEScontactsView.h"

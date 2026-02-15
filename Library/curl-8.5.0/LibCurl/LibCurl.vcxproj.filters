@@ -1058,5 +1058,8 @@
     <None Include="Rebuild.btm" />
     <None Include="..\include\curl\Makefile.am" />
     <None Include="..\include\curl\Makefile.in" />
+    <None Include="..\lib\Makefile.inc">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

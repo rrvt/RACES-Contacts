@@ -1,17 +1,19 @@
 rem Build LibCurl.dll & LibCurl.lib & copy relevant files
 rem Create a Makefile project for LibCurl.  In the NMake Property Page Add the following
 
-rem Build Command Line:        tcc Build.cmd   $(ProjectName) $(SolutionDir) $(Configuration) $(ProjectDir)
-rem Rebuild All Command Line:  tcc Rebuild.cmd $(ProjectName) $(SolutionDir) $(Configuration) $(ProjectDir)
-rem Clean Command Line:        tcc clean.cmd   $(ProjectName) $(SolutionDir) $(Configuration) $(ProjectDir)
-
 echo off
+
+rem Build Command Line:
+rem   tcc Build   $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
+rem Rebuild All Command Line:
+rem   tcc Rebuild $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
+rem Clean Command Line:
+rem   tcc Clean   $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
 
 set ProjectName=%1
 set ProjPath=%~2
 set ConfigName=%3
-
-set BuildPath=%ProjPath%..\builds\libcurl-vc22-x86-debug-dll-ipv6-sspi-schannel\
+set BldPlatform=%4
 
 iff "%ConfigName%" == "Debug" then
   set debugYes=yes
@@ -19,36 +21,60 @@ else
   set debugYes=no
 endiff
 
+set BuildPath=%ProjPath%..\builds\libcurl-vc22
 
-iff 0 then
+iff "%BldPlatform%" == "Win32" then
+set vs2022="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars32.bat"
+set Machine="x86"
+set BuildPath=%BuildPath%-x86
+else
+set vs2022="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat"
+set Machine="x64"
+set BuildPath=%BuildPath%-x64
+endiff
+CALL %vs2022%
+
+@echo debugYes: %debugYes%
+
+iff "%debugYes%" == "yes" then
+set BuildPath=%BuildPath%-debug-dll-ipv6-sspi-schannel\
+@echo BuildPath.Yes:      %BuildPath%
+else
+set BuildPath=%BuildPath%-release-dll-ipv6-sspi-schannel\
+@echo BuildPath.no:       %BuildPath%
+endiff
+
+iff 1 then
 @echo ProjectName:        %ProjectName%
 @echo ProjPath:           %ProjPath%
 @echo Configuration Name: %ConfigName%
 @echo BuildPath:          %BuildPath%
+@echo BldPlatform:        %BldPlatform%
 endiff
 
-set vs2022="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars32.bat"
-CALL %vs2022%
-
-nmake /f Makefile.vc VC=22 MODE=dll ENABLE_UNICODE=yes DEBUG=%debugYes% MACHINE=x86
-
-
-set ConfigDir=%ProjPath%..\..\%ConfigName%\
+set ConfigDir=%ProjPath%..\..\%ConfigName%.%BldPlatform%\
 set IntermediateDir=%ConfigDir%%ProjectName%\
 set IncDir=%IntermediateDir%include\
 set IncCrl=%IncDir%curl\
 
+nmake /f Makefile.vc VC=22 MODE=dll ENABLE_UNICODE=yes DEBUG=%debugYes% MACHINE=%Machine%
+
 iff 1 then
-@echo ConfigDir           %ConfigDir%
-@echo Intermediate Dir:   %IntermediateDir%
-@echo IncDir              %IncDir%
-@echo IncCrl              %IncCrl%
+@echo.
+@echo ConfigDir:        %ConfigDir%
+@echo Intermediate Dir: %IntermediateDir%
+@echo IncDir:           %IncDir%
+@echo IncCrl:           %IncCrl%
+@echo BuildPath:        %BuildPath%
+@echo -------------------------
 endiff
 
 md /S /Ne %ConfigDir%
 md /S /Ne %IntermediateDir%
 md /S /Ne %incDir%
 md /S /Ne %IncCrl%
+
+echo on
 
 copy /T /Q %BuildPath%bin\libcurl*.*   %ConfigDir%
 copy /T /Q %BuildPath%include\curl\*.* %IncCrl%

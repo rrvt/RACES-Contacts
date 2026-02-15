@@ -1,16 +1,27 @@
 rem Clean LibCurl.dll & LibCurl.lib & copy relevant files
 rem Create a Makefile project for LibCurl.  In the NMake Property Page Add the following
 
-rem Build Command Line:        tcc Build.cmd $(ProjectName) $(SolutionDir) $(Configuration)
-rem Rebuild All Command Line:  tcc Rebuild.cmd $(ProjectName) $(SolutionDir) $(Configuration)
-rem Clean Command Line:        tcc clean.cmd $(ProjectName) $(SolutionDir)
-
 echo off
+
+rem Build Command Line:
+rem   tcc Build   $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
+rem Rebuild All Command Line:
+rem   tcc Rebuild $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
+rem Clean Command Line:
+rem   tcc Clean   $(ProjectName) $(ProjectDir) $(Configuration) $(BldPlatform)
 
 set ProjectName=%1
 set ProjectPath=%~2
 set ConfigName=%3
-set ConfigDir=%ProjectPath%..\..\%ConfigName%\
+set BldPlatform=%4
+
+iff "%ConfigName%" == "Debug" then
+  set debugYes=yes
+else
+  set debugYes=no
+endiff
+
+set ConfigDir=%ProjectPath%..\..\%ConfigName%.%BldPlatform%\
 set IntermediateDir=%ConfigDir%%ProjectName%\
 set IncDir=%IntermediateDir%include\
 set IncCrl=%IncDir%curl\
@@ -21,7 +32,7 @@ else
   set debugYes=no
 endiff
 
-iff 0
+iff 1
 @echo ProjectName: %ProjectName%
 @echo Project Path: %ProjectPath%
 @echo Configuration Name: %ConfigName%
@@ -30,10 +41,17 @@ iff 0
 rem WITH_PREFIX=%IntermediateDir%
 endiff
 
+
+iff "%BldPlatform%" == "Win32" then
 set vs2022="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars32.bat"
+set Machine="x86"
+else
+set vs2022="C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat"
+set Machine="x64"
+endiff
 CALL %vs2022%
 
-nmake /f Makefile.vc VC=22 MODE=dll ENABLE_UNICODE=yes DEBUG=%debugYes% MACHINE=x86 clean
+nmake /f Makefile.vc VC=22 MODE=dll ENABLE_UNICODE=yes DEBUG=%debugYes% MACHINE=%Machine% clean
 
 iff DIREXIST %ConfigDir% del /t %ConfigDir%libcurl*.*
 iff DIREXIST %IncCrl% then

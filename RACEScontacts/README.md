@@ -7,29 +7,37 @@ Separated Value (CSV) file suitable for loading into Excel.
 
 ## Getting Started
 
-The application may be executed directly out of the Release directory or installed in Windows as an
-application.
+The application is built with Visual Studio 2022 (VS22).  It was compiled with the following
+properties:
 
-## Prerequisites
+  o Windows Latest SDK Version
+  o Platform Toolset: visual Studio 2022
+  o MFC: Use MFC in a Shared DLL
+  o Character Set:  Use Unicode Character Set
+  o Built for the 64 bit (x64) platform because ODBC is now only available in the x64 platform
+  o Additional Include Directories:
+    * $(ProjectDir)
+    * $(SolutionDir)..\..\Library\Library.prj\
+    * $(SolutionDir)..\..\Library\DocView\
+  o  Precompiled Header:  Not Using Precompiled Headers
+  o  Linker/Additional Dependencies:  Htmlhelp.lib
 
-Windows 7 or above.  visual Studio 2017 or above.  WIX Installer.
+The HTML Help Workshop (HHW), Version 4.74.8702.0 was used to prepare the help file (WixApp.chm).  It is
+copied into the Release directory.  I used Dreamweaver (DW) to do most of the content production of the
+help files that the HTML Help Workshop produces (i.e. HHW is used to produce the pages/files needed
+and DW is used to fill in the content).
 
-Microsoft HTML Help Workshop (last version).  This is the link to the last version:
+The Installer requires the Wix, HeatWave and NuGet-Tools Extensions to VS22.  WixApp (one of my
+applications, see git) was used to produce the product.wxs file.
+
+### Prerequisites
+
+The WiX, HeatWave, NuGet-Tools Toolsets must be installed in Visual Studio.
+The "HTML Help Workshop" (google it) must be installed.  Visual Studio 2022 or later.
 ```
 https://docs.microsoft.com/en-us/previous-versions/windows/desktop/htmlhelp/microsoft-html-help-downloads
 ```
 Access to the RACES database.
-
-A version of the Data Access Object dynamic library must be on your system.  The library module,
-DAOAccess.h, contains the following lines (which you may have to change):
-```
-#import <C:\Program Files (x86)\Microsoft Office\root\Office16\ACEDAO.DLL> rename(_T("EOF"), _T("DaoEof"))
-using namespace DAO;
-```
-Here is an explanation of DAO:
-```
-   https://en.wikipedia.org/wiki/Data_access_object
-```
 
 ## Built With
 
@@ -39,14 +47,21 @@ Dreamweaver is used to construct the html files used in the Help Workshop.
 
 This work was built with Unicode as the character implementation.
 
-My current operating system is Windows 7 and I have little interest in moving to Windows 10 until it
-appears to be stable.  In April 2021 it still does not appear stable.
+My current operating system is Windows 11.
 
 ## Installing
 
 The msi file will install the application.
 
 ## Updates
+
+### Update 2/15/26
+
+Build for the 64 bit platform.  Upgraded Wix to HeatWave version 4.
+Prior to this version a Win32 platform was used since the 2010 Access Runtime supported both 32 bit
+and 64 bit drivers.  But try as I did, I could not get the 2010 32 bit Access Runtime to install on
+my laptop.  The solution was to build for the 64 bit platform and load the 2016 Access Runtime
+(64 bit).
 
 ### Update 10/21/25
 
