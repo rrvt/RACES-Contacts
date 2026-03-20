@@ -1,0 +1,5 @@
+D:\Sources\Racescontacts\Release\RACEScontacts.msi
+obj\Release\Product.wixobj
+obj\Release\RACEScontacts.wix.wixproj.BindContentsFileListnull.txt
+obj\Release\RACEScontacts.wix.wixproj.BindOutputsFileListnull.txt
+obj\Release\RACEScontacts.wix.wixproj.BindBuiltOutputsFileListnull.txt

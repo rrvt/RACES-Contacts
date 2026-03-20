@@ -1,0 +1,2 @@
+D:\Sources\RACEScontacts\Release\ContactsInstaller.msi
+D:\Sources\RACEScontacts\Release\ContactsInstaller.wixpdb

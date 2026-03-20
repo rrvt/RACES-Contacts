@@ -2,63 +2,28 @@
 
 
 #pragma once
+#ifndef DocView
+#define DocView 1
+#endif
 
-#define MyButtonDefs
-#define DocViewTB
 
-
-#ifdef ButtonDefs
 #include "TBButton.h"
 #include "TBEditBox.h"
-#ifdef DocViewTB
-#else
-#include "TBCbxMenu.h"
-#endif
-#include "TBCboBx.h"
-#endif
-
+#include "TBCboBoxes.h"
+#ifdef DocView
 #include "TBMenu.h"
-#include "ToolBarBase.h"
+#endif
 
+#include "ToolBarBase.h"
 
 struct CbxItem;
 
 
 class MyToolBar : public ToolBarBase {
 
-#ifdef ButtonDefs
-
-TBButton  button;
-TBEditBox editBox;
-
-#ifdef DocViewTB
-
 TBMenu    menu;
 TBMenu    menu1;
-
-#else
-
-TBCbxMenu cbxMenu;
-TBCbxMenu cbxMenu1;
-
-#endif
-
-TBCboBx   cboBx;
-
-#ifdef DocViewTB
-
-TBMenu    saveMenu;
-
-#else
-
-TBCboBx   cboBx1;
-
-#endif
-#endif
-
-TBMenu    menu;
-TBMenu    menu1;
-
+//TBMenu    saveMenu;
 
 public:
 
@@ -66,30 +31,43 @@ public:
  ~MyToolBar() { }
 
   bool    addButton( uint id, TCchar* caption);
+
   bool    addEditBox(uint id, int     noChars);
   CString getText(uint id);
 
-#ifdef DocViewTB
-
-  bool    addMenu(   uint id, int     idr, TCchar* caption);
-  bool    addMenu(   uint id, int     idr, int     index);
-  bool    addMenu(   uint id, CbxItem cbxItem[], int n, TCchar* caption);
-
-#else
-
-  bool    addMenu(   uint id, int     idr, TCchar* caption);
-  bool    addMenu(   uint id, CbxItem cbxItem[], int n, TCchar* caption);
-  void    dispatch(uint id);
-
+#ifdef DocView
+  bool    addMenu(uint id, int idr, TCchar* caption);         // uses icon at index on toolbar
+  bool    addMenu(uint id, int idr, int index);               // uses icon at index on toolbar
+  bool    addMenu(uint id, CCbxItem cbxItem[], int n, TCchar* caption);
 #endif
 
-  bool    addCBx(    uint id);
-  bool    addCBx(    uint id, int     idr, TCchar* caption);
-  bool    addCbxItem(uint id, TCchar* txt, int data);
-  bool    addCBx(    uint id, CbxItem cbxItem[], int n, TCchar* caption);
-  bool    addCbxItemSorted(uint id, TCchar* txt, int data);
-  void    setCaption(uint id, TCchar* caption);
-  void    setWidth(uint id);
-  bool    getCurSel( uint id, String& s, int& data);
+  void    clearCbo(      uint id)              {ToolBarBase::clearCbo(id);}
+  bool    addCboBox(     uint id)              {return ToolBarBase::addCboBox(id, 12);}
+  bool    setCboItems(   uint id, uint    idr) {return ToolBarBase::setCboItems(id, idr);}
+  bool    setCboItems(   uint id, CCbxItem cbxItem[], int n)
+                                               {return ToolBarBase::setCboItems(id, cbxItem, n);}
+  void    setCboCaption( uint id, TCchar* txt);
+  void    setImage(      uint id, int toolBarIndex);
+  void    setCboWthPrct( uint id, int percent);
+  void    setCboHeight(  uint id);
+  void    dispatch(uint id);
+
+  // Manipulate tuple in the ComboBox
+
+  bool    addCboItem(    uint id, TCchar* txt, ulongP data = 0);
+  bool    addCboItemSrtd(uint id, TCchar* txt, ulongP data = 0);
+
+  bool    setCurSel(uint id, int index);
+
+  bool    setCurSel(uint id, TCchar* tc);
+
+  int     getCurSel(uint id);
+  bool    getCurSel(uint id, String& s, ulongP& data);
+  ulongP  getData(uint id, int index);
+
+  int     find(uint id, TCchar* tc);
+
+  void    adjustLayout() {ToolBarBase::adjustLayout();}
   };
+
 

@@ -1,0 +1,4 @@
+D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\RACEScontacts.wix.wixproj.CoreCompileInputs.cache
+D:\Sources\RacesContacts\Release.x64\RACEScontacts.msi
+D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\RACEScontacts.msi
+D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\RACEScontacts.wix.wixproj.BindTracking-neutral.txt

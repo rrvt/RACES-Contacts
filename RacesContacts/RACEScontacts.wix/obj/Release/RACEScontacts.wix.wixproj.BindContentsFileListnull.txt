@@ -1,0 +1,3 @@
+D:\Sources\RacesContacts\RACEScontacts\..\Release\RACEScontacts.chm
+D:\Sources\RacesContacts\RACEScontacts\..\..\Library\License\MITLicenseFile.rtf
+D:\Sources\RacesContacts\RACEScontacts\..\Release\RACEScontacts.exe

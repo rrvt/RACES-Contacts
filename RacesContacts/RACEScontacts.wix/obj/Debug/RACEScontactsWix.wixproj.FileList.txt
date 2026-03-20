@@ -1,0 +1,6 @@
+D:\Sources\RACEScontacts\Debug\RACEScontacts.msi
+D:\Sources\RACEScontacts\Debug\RACEScontacts.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\RACEScontactsWix.wixproj.BindContentsFileListnull.txt
+obj\Debug\RACEScontactsWix.wixproj.BindOutputsFileListnull.txt
+obj\Debug\RACEScontactsWix.wixproj.BindBuiltOutputsFileListnull.txt

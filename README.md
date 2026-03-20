@@ -55,6 +55,11 @@ The msi file will install the application.
 
 ## Updates
 
+### Update 3/19/26
+
+Removed the Win32 platform.  Added x64 platform.   Normalized MyToolBar.  Lots of changes in the
+library.
+
 ### Update 2/15/26
 
 Build for the 64 bit platform.  Upgraded Wix to HeatWave version 4.

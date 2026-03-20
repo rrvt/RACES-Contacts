@@ -1,0 +1,14 @@
+BuiltTargetOutput	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\RACEScontacts.msi
+Input	C:\Program Files (x86)\WixApp\banner.bmp
+Input	C:\Program Files (x86)\WixApp\dialog.bmp
+Input	C:\Users\rrvt\.nuget\packages\wixtoolset.ui.wixext\6.0.2\wixext6\WixToolset.UI.wixext.dll
+Input	D:\Sources\RacesContacts\RACEScontacts\..\..\Library\License\MITLicense.ico
+Input	D:\Sources\RacesContacts\RACEScontacts\..\RACEScontacts.prj\res\RACEScontacts.ico
+Input	D:\Sources\RacesContacts\Release.x64\\..\..\Library\License\MITLicenseFile.rtf
+Input	D:\Sources\RacesContacts\Release.x64\\..\..\RacesContacts\Release.x64\RACEScontacts.chm
+Input	D:\Sources\RacesContacts\Release.x64\\..\..\RacesContacts\Release.x64\RACEScontacts.exe
+Intermediate	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\#cab1.cab
+Intermediate	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\WixToolset.UI.wixext_KvfpSCZDHIoa8Dc2qWRaJwGpqBs\wix-ir\exclamic.ico
+Intermediate	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\WixToolset.UI.wixext_KvfpSCZDHIoa8Dc2qWRaJwGpqBs\wix-ir\info.ico
+Intermediate	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\WixToolset.UI.wixext_KvfpSCZDHIoa8Dc2qWRaJwGpqBs\wix-ir\new.ico
+Intermediate	D:\Sources\RacesContacts\RACEScontacts.wix\obj\x64\Release\WixToolset.UI.wixext_KvfpSCZDHIoa8Dc2qWRaJwGpqBs\wix-ir\up.ico

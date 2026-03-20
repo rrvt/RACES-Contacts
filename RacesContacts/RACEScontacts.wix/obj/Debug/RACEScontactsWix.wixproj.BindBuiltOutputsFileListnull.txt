@@ -1,0 +1,2 @@
+D:\Sources\RACEScontacts\Debug\RACEScontacts.msi
+D:\Sources\RACEScontacts\Debug\RACEScontacts.wixpdb
